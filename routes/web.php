@@ -12,9 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::post('/geo', 'GeoController@index');
