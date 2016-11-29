@@ -28,7 +28,7 @@ class EditUsersTable extends Migration
     {
         Schema::table('users', function($table)
         {
-            $table->string('postal_code');
+            $table->dropColumn('postal_code');
         });
 
     }

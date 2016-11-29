@@ -16,8 +16,10 @@ class CreateRestaurantsTable extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
+            $table->string('name');
             $table->string('address');
-            $table->string('price');
+            $table->integer('min_price')->unsigned();
+            $table->integer('max_price')->unsigned();
             $table->decimal('latitude', 10, 6);
             $table->decimal('longitude', 10, 6);
             $table->timestamps();
