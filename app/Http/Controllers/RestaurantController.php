@@ -56,5 +56,20 @@ class RestaurantController extends Controller
             'longitude' => $data['longitude'],
         ]);
     }
+    
+    
+    // Denys
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    public function contact(){
+        return view('search');
+    }
+    protected function results(Request $req){
+        $keywords = $req -> input('keywords');
+        $restos = DB::table('restaurants')
+                -> select('name') -> pluck('name');
+        $imploded = explode("','", $restos);
+        return view('results') -> with('keywords', $keywords)
+                -> with('restos', $restos);
+    }
 
 }
