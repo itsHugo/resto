@@ -41,6 +41,15 @@
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
+                
+                <div>
+                    <form method="POST" action="{{url('/results')}}">
+                        {{ csrf_field() }}
+                        <span>
+                            <input type="search" id="search" name="keywords" required="" placeholder="Search for restaurants" autocomplete="off" spellcheck="false">
+                        </span></span> 
+                        <button type="submit" name="search">Search</button></form>
+                </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->

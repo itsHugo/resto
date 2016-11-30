@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use App\Restaurant;
 use Illuminate\Http\Request;
 
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
+
 class RestaurantController extends Controller
 {
     /**
@@ -16,7 +22,7 @@ class RestaurantController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('guest');
     }
 
     /**
@@ -59,10 +65,11 @@ class RestaurantController extends Controller
     
     
     // Denys
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    //use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function contact(){
         return view('search');
     }
+    
     protected function results(Request $req){
         $keywords = $req -> input('keywords');
         $restos = DB::table('restaurants')
