@@ -28,5 +28,5 @@ $factory->define(App\Restaurant::class, function (Faker\Generator $faker) {
        'name' => $faker->name,
        'address' => $faker->address,
        
-   ]
+   ];
 });

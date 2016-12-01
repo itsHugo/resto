@@ -43,18 +43,20 @@
                 </div>
                 
                 <div>
-                    <form method="POST" action="{{url('/results')}}">
-                        {{ csrf_field() }}
-                        <span>
-                            <input type="search" id="search" name="keywords" required="" placeholder="Search for restaurants" autocomplete="off" spellcheck="false">
-                        </span></span> 
-                        <button type="submit" name="search">Search</button></form>
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
+                        <form class="navbar-form navbar-left" method="POST" action="{{url('/results')}}">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <input class="form-control" type="search" id="search" name="keywords" required="" placeholder="Search for restaurants..." autocomplete="off" spellcheck="false">
+                            </div>
+                            <input class="btn btn-primary" type="submit" name="search" value="Search"/>
+                        </form>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
