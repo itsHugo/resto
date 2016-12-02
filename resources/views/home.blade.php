@@ -47,6 +47,7 @@
                     </div>
             </div>
 
+            <!-- Display restaurants -->
             <div class="panel panel-default">
                 <div class="panel-heading">Restaurants</div>
                 @for($i = 0; $i < 20; $i++)

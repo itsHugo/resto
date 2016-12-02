@@ -45,6 +45,25 @@ class RestaurantController extends Controller
     }
 
     /**
+     * Create a new task.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+
+        $request->user()->tasks()->create([
+            'name' => $request->name,
+        ]);
+
+        return redirect('/tasks');
+    }
+
+    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -56,6 +75,7 @@ class RestaurantController extends Controller
             'user_id' => $data['user_id'],
             'name' => $data['name'],
             'address' => $data['address'],
+            'genre' => $data['genre'],
             'min_price' => $data['min_price'],
             'max_price' => $data['max_price'],
             'latitude' => $data['latitude'],
@@ -80,3 +100,4 @@ class RestaurantController extends Controller
     }
 
 }
+

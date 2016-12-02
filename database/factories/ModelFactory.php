@@ -10,7 +10,6 @@
 | database. Just tell the factory how a default model should look.
 |
 */
-
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
@@ -18,6 +17,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
+        'postal_code' => $faker->postcode,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
@@ -25,8 +25,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Restaurant::class, function (Faker\Generator $faker) {
    return [
-       'name' => $faker->name,
+       'user_id' => $faker->numberBetween(1,10),
+       'name' => $faker->company,
        'address' => $faker->address,
-       
+       'genre' => $faker->word,
+       'min_price' => $faker->numberBetween(2,10),
+       'max_price' => $faker->numberBetween(20,50),
+       'latitude' => mt_rand(45000000, 46000000)/1000000,
+       'longitude' => mt_rand(-74000000,-73000000)/1000000,
    ];
 });

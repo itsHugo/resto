@@ -18,6 +18,7 @@ class CreateRestaurantsTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->string('name');
             $table->string('address');
+            $table->string('genre');
             $table->integer('min_price')->unsigned();
             $table->integer('max_price')->unsigned();
             $table->decimal('latitude', 10, 6);

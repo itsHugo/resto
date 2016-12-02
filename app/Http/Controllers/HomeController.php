@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Restaurant;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $restaurants = Restaurant::orderBy('latitude', 'longitude' , 'ASC') -> paginate(20);
+        return view('home', [
+            'restaurants' => $restaurants,
+        ]);
     }
 }

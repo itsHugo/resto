@@ -12,6 +12,20 @@ class Restaurant extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'name', 'address', 'min_price', 'max_price', 'latitude', 'longitude'
+        'name', 'address', 'genre', 'min_price', 'max_price', 'latitude', 'longitude'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function userCanEdit(User $user)
+    {
+        return $user->id === $this->user_id;
+    }
+
+
+
+
 }
