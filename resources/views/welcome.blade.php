@@ -21,7 +21,7 @@
                     </div>
                     <div class="panel-body">
                         <!-- Geolocation -->
-                        <form action="/geo" method="POST" class="form-horizontal" id="hiddenForm">
+                        <form action="{{ url('/geo') }}" method="POST" class="form-horizontal" id="hiddenForm">
                         {{ csrf_field() }}
                         <!-- Postal code -->
                             <div class="form-group">

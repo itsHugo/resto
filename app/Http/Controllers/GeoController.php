@@ -20,6 +20,6 @@ class GeoController extends Controller
      */
     public function index()
     {
-        return view($this->redirectTo);
+        return view($this->redirectTo );
     }
 }
