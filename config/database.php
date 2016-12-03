@@ -67,13 +67,15 @@ return [
             'engine' => null,
         ],
 
+        /**
+         * Heroku
+         */
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', 'ec2-50-17-212-238.compute-1.amazonaws.com
-'),
-            'port' => env('DB_PORT', 'dbjk59km45qpf6'),
-            'database' => env('DB_DATABASE', 'nopxwkzbcocudv'),
-            'username' => env('DB_USERNAME', '5432'),
+            'host' => env('DB_HOST', 'ec2-50-17-212-238.compute-1.amazonaws.com'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'dbjk59km45qpf6'),
+            'username' => env('DB_USERNAME', 'nopxwkzbcocudv'),
             'password' => env('DB_PASSWORD', '0Wcrj7B13GtEwNI5N8QY3T5PUx'),
             'charset' => 'utf8',
             'prefix' => '',
