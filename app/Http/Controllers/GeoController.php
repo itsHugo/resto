@@ -35,12 +35,10 @@ class GeoController extends Controller
             } else {
                 $pairs = $this->geo->getGeocodingSearchResults($request->postal);
             }
-            return redirect('/restaurants', [
-                'pairs' => $pairs
-            ]);
+            return redirect('/restaurants');
 
 
-        //return redirect('/restaurants');
+        //return redirect()->route('/restaurants', [$pairs];
 
     }
 }

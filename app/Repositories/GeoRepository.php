@@ -9,6 +9,7 @@
 namespace App\Repositories;
 
 use DB;
+use App\Restaurant;
 
 class GeoRepository
 {

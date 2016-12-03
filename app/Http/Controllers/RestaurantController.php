@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\GeoRepository;
 use App\Restaurant;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,16 @@ use Illuminate\Support\Facades\DB;
 
 class RestaurantController extends Controller
 {
-    public function index(){
-        $restaurants = Restaurant::orderBy('created_at', 'DESC') -> paginate(10);
+    protected $geo;
+
+    public function __construct(GeoRepository $geo){
+        $this->geo = $geo;
+    }
+
+    public function index(Request $request){
+        //$restaurants = Restaurant::orderBy('created_at', 'DESC') -> paginate(10);
+        $restaurants = $this->geo->getRestaurantsNear(45.4617295, -73.5938763, 50);
+
         return view('home', [
             'restaurants' => $restaurants
         ]);
