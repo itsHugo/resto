@@ -8,6 +8,7 @@
 
 namespace App\Repositories;
 
+use DB;
 
 class GeoRepository
 {
@@ -19,7 +20,7 @@ class GeoRepository
      * @param $address
      * @return mixed
      */
-    public function GetGeocodingSearchResults($address) {
+    public function getGeocodingSearchResults($address) {
         $address = urlencode($address); //Url encode since it was provided by user
         $url = "http://maps.google.com/maps/api/geocode/xml?address={$address}&sensor=false";
 

@@ -22,65 +22,42 @@ class RestaurantController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'user_id' => 'required',
-            'name' => 'required|max:255',
-            'address' => 'required|max:255',
-            'min_price' => '',
-            'max_price' => '',
-            'latitude' => '',
-            'longitude' => '',
-        ]);
-    }
-
-    /**
-     * Create a new task.
+     * Create a new restaurant.
      *
      * @param  Request  $request
      * @return Response
      */
     public function store(Request $request)
     {
+        // Validate request data
         $this->validate($request, [
+            'user_id' => 'required',
             'name' => 'required|max:255',
+            'address' => 'required|max:255',
+            'genre' => 'required|max:255',
+            'min_price' => 'required',
+            'max_price' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ]);
 
-        $request->user()->tasks()->create([
+        // Store in database
+        $request->user()->restaurants()->create([
+            'user_id' => $request->user_id,
             'name' => $request->name,
+            'address' => $request->address,
+            'genre' => $request->genre,
+            'min_price' => $request->min_price,
+            'max_price' => $request->max_price,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
         ]);
 
-        return redirect('/tasks');
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return Restaurant
-     */
-    protected function create(array $data)
-    {
-        return Restaurant::create([
-            'user_id' => $data['user_id'],
-            'name' => $data['name'],
-            'address' => $data['address'],
-            'genre' => $data['genre'],
-            'min_price' => $data['min_price'],
-            'max_price' => $data['max_price'],
-            'latitude' => $data['latitude'],
-            'longitude' => $data['longitude'],
-        ]);
+        return redirect('/restaurants/{restaurant}');
     }
     
     
