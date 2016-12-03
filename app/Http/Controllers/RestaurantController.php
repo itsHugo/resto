@@ -13,16 +13,11 @@ use Illuminate\Support\Facades\DB;
 
 class RestaurantController extends Controller
 {
-    /**
-     * Where to redirect users after adding.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    public function __construct()
-    {
-        $this->middleware('auth');
+    public function index(){
+        $restaurants = Restaurant::orderBy('created_at', 'DESC') -> paginate(10);
+        return view('home', [
+            'restaurants' => $restaurants
+        ]);
     }
 
     /**
@@ -58,6 +53,12 @@ class RestaurantController extends Controller
         ]);
 
         return redirect('/restaurants/{restaurant}');
+    }
+
+    public function edit(Request $request, Restaurant $restaurant){
+        $this->authorize('edit', $restaurant);
+
+        // Edit restaurant
     }
     
     

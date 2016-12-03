@@ -30,8 +30,8 @@ class GeoRepository
         $xml->loadXML($results);
 
         // traverse the DOMDocument or use XPath to find the longitude/latitude pairs
-        $latitude = $xml->getElementsByTagName('lat')->item(0)->nodeValue;
-        $longitude = $xml->getElementsByTagName('long')->item(0)->nodeValue;
+        $latitude = $xml->getElementsByTagName('lat')->item(0);
+        $longitude = $xml->getElementsByTagName('long')->item(0);
 
         // assign pairs to array
         $pairs['latitude'] = $latitude;

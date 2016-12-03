@@ -28,18 +28,19 @@ class GeoController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->error == 0){
-            echo $request->error;
+        //if($request->error === 0){
             if($request->latitude && $request->longitude){
                 $pairs['latitude'] = $request->latitude;
                 $pairs['longitude'] = $request->longitude;
             } else {
                 $pairs = $this->geo->getGeocodingSearchResults($request->postal);
             }
-            return view($this->redirectTo);
-        }
+            return redirect('/restaurants', [
+                'pairs' => $pairs
+            ]);
 
-        return view($this->redirectTo);
+
+        //return redirect('/restaurants');
 
     }
 }

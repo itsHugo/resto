@@ -72,12 +72,12 @@
                 <div class="panel-heading">
                     Restaurants
                 </div>
-                @for($i = 0; $i < 20; $i++)
+                @foreach($restaurants as $restaurant)
                     <div class="panel-body">
-                        <p>{{$i}}</p>
+                        <p>{{ $restaurant->name }}</p>
                         </hr>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>

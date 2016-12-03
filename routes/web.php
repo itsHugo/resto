@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::post('/geo', 'GeoController@index');
 
+Route::get('/restaurants', 'RestaurantController@index');
 
 Route::get('/contact', 'RestaurantController@contact');
 Route::post('/results', 'RestaurantController@results');
