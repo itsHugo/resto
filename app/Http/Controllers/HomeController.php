@@ -33,6 +33,12 @@ class HomeController extends Controller
         //return view('home', [
         //    'restaurants' => $restaurants,
         //]);
-        return view('home');
+        //return view('home');
+
+        $restaurants = $this->geo->getRestaurantsNear($request->latitude, $request->longitude);
+
+        return view('/home', [
+            'restaurants' => $restaurants
+        ]);
     }
 }

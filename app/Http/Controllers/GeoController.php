@@ -7,15 +7,14 @@ use App\Repositories\GeoRepository;
 
 class GeoController extends Controller
 {
-    /**
-     * Where to redirect users after processing the form.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
     protected $geo;
 
+    /**
+     * GeoController constructor.
+     * Sets the GeoRepository.
+     *
+     * @param GeoRepository $geo
+     */
     public function __construct(GeoRepository $geo)
     {
         $this->geo = $geo;
@@ -35,7 +34,10 @@ class GeoController extends Controller
             } else {
                 $pairs = $this->geo->getGeocodingSearchResults($request->postal);
             }
-            return redirect('/restaurants');
+            return redirect()->action('HomeController@index', [
+                'latitude' =>$pairs['latitude'],
+                'longitude' => $pairs['longitude']
+            ]);
 
 
         //return redirect()->route('/restaurants', [$pairs];

@@ -22,7 +22,7 @@ class RestaurantController extends Controller
 
     public function index(Request $request){
         //$restaurants = Restaurant::orderBy('created_at', 'DESC') -> paginate(10);
-        $restaurants = $this->geo->getRestaurantsNear(45.4617295, -73.5938763, 50);
+        $restaurants = $this->geo->getRestaurantsNear(45.4617295, -73.5938763, 20);
 
         return view('home', [
             'restaurants' => $restaurants
