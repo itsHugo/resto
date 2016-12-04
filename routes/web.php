@@ -24,3 +24,4 @@ Route::get('/restaurants', 'RestaurantController@index');
 
 Route::get('/contact', 'RestaurantController@contact');
 Route::post('/results', 'RestaurantController@results');
+Route::get('/results', 'RestaurantController@results');

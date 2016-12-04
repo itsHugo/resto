@@ -21,12 +21,7 @@ class RestaurantController extends Controller
     }
 
     public function index(Request $request){
-        //$restaurants = Restaurant::orderBy('created_at', 'DESC') -> paginate(10);
-        $restaurants = $this->geo->getRestaurantsNear(45.4617295, -73.5938763, 20);
 
-        return view('home', [
-            'restaurants' => $restaurants
-        ]);
     }
 
     /**
@@ -79,11 +74,12 @@ class RestaurantController extends Controller
     
     protected function results(Request $req){
         $keywords = $req -> input('keywords');
-        $restos = DB::table('restaurants')
-                -> select('name') -> pluck('name');
-        $imploded = explode("','", $restos);
-        return view('results') -> with('keywords', $keywords)
-                -> with('restos', $restos);
+        $restos = DB::table('restaurants')->where('name', 'like', '%'.$keywords.'%')->paginate(20);
+
+        return view('results', [
+            'restaurants' => $restos,
+            'keywords' => $keywords
+        ]);
     }
 
 }

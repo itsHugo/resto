@@ -17,11 +17,11 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <a data-toggle="collapse" href="#collapseResto">Add a restaurant</a>
+                    <a data-toggle="collapse" href="#collapseRestoForm">Add a restaurant</a>
                 </div>
-                <div id="collapseResto" class="panel-body collapse">
+                <div id="collapseRestoForm" class="panel-body collapse">
                     <!-- New restaurant form -->
-                    <form action="{{url('/restaurant')}}" method="POST" class="form-horizontal">
+                    <form action="{{url('/restaurant/store')}}" method="POST" class="form-horizontal">
                         {{csrf_field()}}
 
                         <!-- Restaurant name -->
@@ -34,9 +34,29 @@
 
                         <!-- Restaurant address -->
                         <div class="form-group">
-                            <label for="address" class="col-sm-2 control-label">Address</label>
+                            <label for="street_address" class="col-sm-2 control-label">Street address</label>
                             <div class="col-sm-9">
-                                <input type="text" name="address" id="restaurant-address" class="form-control" value="{{ old('address') }}" placeholder="Number, street name, city, ...">
+                                <input type="text" name="street_address" id="restaurant-address" class="form-control" value="{{ old('street_address') }}" placeholder="#### street name">
+                            </div>
+                        </div>
+
+                        <!-- Restaurant city -->
+                        <div class="form-group">
+                            <label for="city" class="col-sm-2 control-label">City</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="address" id="restaurant-city" class="form-control" value="{{ old('city') }}" placeholder="City name">
+                            </div>
+                        </div>
+
+                        <!-- Restauramt province and postal code -->
+                        <div class="form-group">
+                            <label for="province" class="col-sm-2 control-label">Province</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="province" id="restaurant-province" class="form-control" value="{{ old('province') }}" placeholder="eg. QC">
+                            </div>
+                            <label for="postal_code" class="col-sm-2 control-label">Postal code</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="postal_code" id="restaurant-postcode" class="form-control" value="{{ old('postal_code') }}" placeholder="eg. M5V 1S5">
                             </div>
                         </div>
 
@@ -68,16 +88,26 @@
             </div>
 
             <!-- Display restaurants -->
-            <div class="panel panel-default" data-toggle="collapse" data-target=".demo">
+            <div class="panel panel-default">
                 <div class="panel-heading">
-                    Restaurants
+                    <h2>Restaurants</h2>
                 </div>
+
                 @foreach($restaurants as $restaurant)
-                    <div class="panel-body">
-                        <p>{{ $restaurant->name }}</p>
-                        </hr>
-                    </div>
+                    <a class="list-group-item">
+                        <div class="panel-body">
+                            <h3>{{ $restaurant->name }}</h3>
+                            <p>{{ $restaurant->street_address }}</p>
+                            <p>{{ $restaurant->city }}</p>
+                            <p>{{ $restaurant->postal_code }}</p>
+                        </div>
+                    </a>
                 @endforeach
+
+
+                <div class="panel-footer">
+
+                </div>
             </div>
         </div>
     </div>

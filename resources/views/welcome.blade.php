@@ -8,26 +8,16 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Welcome</div>
-                    <div class="panel-body">
-                        @if(Auth::check())
-                            You are logged in {{ Auth::user()->name }}!
-                            </br>
-                            Your postal code is {{ Auth::user()->postal_code }}.
-                        @else
-                            Please <a href="{{ url('/login') }}">login</a> or
-                            <a href="{{ url('/register') }}">register</a>!
-                        @endif
-                    </div>
+                    <div class="panel-heading"><h2>Find nearest restaurants</h2></div>
                     <div class="panel-body">
                         <!-- Geolocation -->
                         <form action="{{ url('/geo') }}" method="POST" class="form-horizontal" id="hiddenForm">
                         {{ csrf_field() }}
                         <!-- Postal code -->
                             <div class="form-group">
-                                <label for="postal" class="col-sm-3 control-label">Postal Code</label>
+                                <label for="postal" class="col-sm-3 control-label">Enter Postal Code</label>
                                 <div class="col-sm-6">
-                                    <input type="text" name="postal" id="postal" class="form-control" value="{{ old('postal') }}">
+                                    <input type="text" name="postal" id="postal" class="form-control" value="{{ old('postal') }}" placeholder="eg. M5V 1S5">
                                 </div>
                             </div>
                             <!-- all the hidden fields -->
