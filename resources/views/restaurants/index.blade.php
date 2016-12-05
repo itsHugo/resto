@@ -136,6 +136,10 @@
                                     </div>
                                 </a>
                             @endforeach
+
+                                <div class="panel-footer">
+                                    {!! $reviews->render() !!}
+                                </div>
                         @endif
                     </div>
                 </div>

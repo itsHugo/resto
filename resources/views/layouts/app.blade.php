@@ -52,7 +52,6 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                         <form class="navbar-form navbar-left" method="GET" action="{{url('/results')}}">
-                            {{ csrf_field() }}
                             <div class="form-group">
                                 <input class="form-control" type="search" id="search" name="keywords" required="" placeholder="Search for restaurants..." autocomplete="off" spellcheck="false">
                             </div>

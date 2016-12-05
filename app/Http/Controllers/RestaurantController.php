@@ -29,7 +29,7 @@ class RestaurantController extends Controller
     public function index(Request $request, Restaurant $restaurant){
 
         $reviews = DB::table('reviews')->where('restaurant_id', '=', $restaurant->id)->
-        paginate(20);
+        paginate(5);
 
         return view('restaurants.index', [
             'restaurant' => $restaurant,
