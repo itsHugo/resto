@@ -29,7 +29,7 @@
                         <h2>Restaurants</h2>
                     </div>
                     @foreach($restaurants as $restaurant)
-                        <a class="list-group-item">
+                        <a class="list-group-item" href="{{ url('restaurant/'.$restaurant->id) }}">
                             <div class="panel-body">
                                 <h3>{{ $restaurant->name }}</h3>
                                 <p>{{ $restaurant->street_address }}</p>

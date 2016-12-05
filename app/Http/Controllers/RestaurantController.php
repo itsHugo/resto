@@ -40,30 +40,23 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-        'name' => $faker->company,
-       'street_address' => $faker->streetAddress,
-       'city' => $faker->city,
-       'province' => $faker->countryCode,
-       'postal_code' => $faker->postcode,
-       'genre' => $faker->word,
-       'min_price' => $faker->numberBetween(2,10),
-       'max_price' => $faker->numberBetween(20,50),
-        */
         // Validate request data
         $this->validate($request, [
-            'user_id' => 'required',
             'name' => 'required|max:255',
-            'address' => 'required|max:255',
-            'genre' => 'required|max:255',
+            'street_address' => 'required|max:255',
+            'city' => 'required|max:255',
+            'province' => 'required|max:255',
             'min_price' => 'required',
             'max_price' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
         ]);
 
+        // Retrieve
+        $pairs = $this->geo->getGeocodingSearchResults($request->postal);
+        $latitude = $pairs['latitude'];
+        $longitude = $pairs['longitude'];
+
         // Store in database
-        $request->user()->restaurants()->create([
+        $restaurant = $request->user()->restaurants()->create([
             'user_id' => $request->user_id,
             'name' => $request->name,
             'street_address' => $request->street_address,
@@ -71,11 +64,11 @@ class RestaurantController extends Controller
             'genre' => $request->genre,
             'min_price' => $request->min_price,
             'max_price' => $request->max_price,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
+            'latitude' => $latitude,
+            'longitude' => $longitude
         ]);
 
-        return redirect('/restaurants/{restaurant}');
+        return redirect('/restaurant/'.$restaurant->id);
     }
 
     public function edit(Request $request, Restaurant $restaurant){
@@ -96,7 +89,10 @@ class RestaurantController extends Controller
     protected function results(Request $req){
         $keywords = $req -> input('keywords');
         // TO DO: add where for city name, genre, address,...
-        $restos = DB::table('restaurants')->where('name', 'like', '%'.$keywords.'%')->paginate(20);
+        $restos = DB::table('restaurants')->where('name', 'like', '%'.$keywords.'%') ->
+            orWhere('genre', 'like', '%'.$keywords.'%') ->
+            orWhere('city', 'like', '%'.$keywords.'%') ->
+            paginate(20);
 
         return view('results', [
             'restaurants' => $restos,
