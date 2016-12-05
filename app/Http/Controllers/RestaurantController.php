@@ -88,10 +88,13 @@ class RestaurantController extends Controller
         $restaurant->name = $request->name;
 
     }
-    
-    
-    // Denys
-    
+
+    public function editResto(Request $request){
+        $restos = DB::table('restaurants')->where('name', '=', $request -> name) -> update(['city' => $request -> city]);
+
+        return redirect('/restaurant/');
+    }
+
     protected function results(Request $req){
         $keywords = $req -> input('keywords');
         // TO DO: add where for city name, genre, address,...
