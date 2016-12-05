@@ -8,7 +8,11 @@ use App\Repositories\GeoRepository;
 
 class HomeController extends Controller
 {
+    /**
+     * @var GeoRepository
+     */
     protected $geo;
+
     /**
      * Create a new controller instance.
      *
@@ -22,19 +26,12 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show home page with nearest restaurants.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        //$restaurants =  $this->geo->getRestaurantsNear($request->latitude, $request->longitude)-> paginate(20);
-        //$restaurants = Restaurant::orderBy('name' , 'ASC') -> paginate(20);
-        //return view('home', [
-        //    'restaurants' => $restaurants,
-        //]);
-        //return view('home');
-
         $restaurants = $this->geo->getRestaurantsNear($request->latitude, $request->longitude);
 
         return view('/home', [

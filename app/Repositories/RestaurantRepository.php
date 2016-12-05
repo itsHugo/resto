@@ -8,10 +8,16 @@
 
 namespace App\Repositories;
 
-use App\Restaurant;
+use App\User;
 
 class RestaurantRepository
 {
+    /**
+     * Get all of the restaurants created by a given user.
+     *
+     * @param User $user
+     * @return mixed
+     */
     public function forUser(User $user){
         return $user->restaurants()->orderBy('created_at', 'asc')->get();
     }

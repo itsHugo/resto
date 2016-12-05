@@ -26,6 +26,11 @@ class Review extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function restaurant()
+    {
+        return $this->belongsTo('App\Restaurant');
+    }
+
     /**
      * Indicates if a User owns a Review.
      *

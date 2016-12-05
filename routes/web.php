@@ -22,6 +22,6 @@ Route::post('/geo', 'GeoController@index');
 
 Route::get('/restaurants', 'RestaurantController@index');
 
-Route::get('/contact', 'RestaurantController@contact');
-Route::post('/results', 'RestaurantController@results');
+Route::get('/restaurant/{restaurant}', 'RestaurantController@index');
+
 Route::get('/results', 'RestaurantController@results');

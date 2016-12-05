@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\GeoRepository;
+use App\Repositories\ReviewRepository;
 use App\Restaurant;
 use Illuminate\Http\Request;
 
@@ -14,14 +15,21 @@ use Illuminate\Support\Facades\DB;
 
 class RestaurantController extends Controller
 {
-    protected $geo;
+    /**
+     * Repositories variable.
+     */
+    protected $geo, $reviews;
 
-    public function __construct(GeoRepository $geo){
+    public function __construct(GeoRepository $geo, ReviewRepository $reviews){
         $this->geo = $geo;
+        $this->reviews = $reviews;
     }
 
-    public function index(Request $request){
-
+    public function index(Request $request, Restaurant $restaurant){
+        return view('restaurants.index', [
+            'restaurant' => $restaurant,
+            'reviews' => $this->reviews->forRestaurant($restaurant) // Get reviews
+        ]);
     }
 
     /**
@@ -32,6 +40,16 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
+        /*
+        'name' => $faker->company,
+       'street_address' => $faker->streetAddress,
+       'city' => $faker->city,
+       'province' => $faker->countryCode,
+       'postal_code' => $faker->postcode,
+       'genre' => $faker->word,
+       'min_price' => $faker->numberBetween(2,10),
+       'max_price' => $faker->numberBetween(20,50),
+        */
         // Validate request data
         $this->validate($request, [
             'user_id' => 'required',
@@ -48,7 +66,8 @@ class RestaurantController extends Controller
         $request->user()->restaurants()->create([
             'user_id' => $request->user_id,
             'name' => $request->name,
-            'address' => $request->address,
+            'street_address' => $request->street_address,
+            'city' => $request->city,
             'genre' => $request->genre,
             'min_price' => $request->min_price,
             'max_price' => $request->max_price,
@@ -63,6 +82,8 @@ class RestaurantController extends Controller
         $this->authorize('edit', $restaurant);
 
         // Edit restaurant
+        $restaurant->name = $request->name;
+
     }
     
     
@@ -74,6 +95,7 @@ class RestaurantController extends Controller
     
     protected function results(Request $req){
         $keywords = $req -> input('keywords');
+        // TO DO: add where for city name, genre, address,...
         $restos = DB::table('restaurants')->where('name', 'like', '%'.$keywords.'%')->paginate(20);
 
         return view('results', [
