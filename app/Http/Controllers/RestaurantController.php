@@ -25,7 +25,7 @@ class RestaurantController extends Controller
         $this->reviews = $reviews;
     }
 
-    public function index(Request $request, Restaurant $restaurant){
+    public function index(Restaurant $restaurant){
         return view('restaurants.index', [
             'restaurant' => $restaurant,
             'reviews' => $this->reviews->forRestaurant($restaurant) // Get reviews

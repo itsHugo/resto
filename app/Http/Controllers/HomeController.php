@@ -20,8 +20,6 @@ class HomeController extends Controller
      */
     public function __construct(GeoRepository $geo)
     {
-        $this->middleware('guest');
-
         $this->geo = $geo;
     }
 
