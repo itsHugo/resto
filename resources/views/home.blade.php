@@ -21,9 +21,23 @@
                     <a data-toggle="collapse" href="#collapseRestoForm">Add a restaurant</a>
                 </div>
                 <div id="collapseRestoForm" class="panel-body collapse">
+                @if (count($errors) > 0)
+                    <!-- Form Error List -->
+                        <div class="alert alert-danger">
+                            <strong>Whoops! Something went wrong!</strong>
+
+                            <br><br>
+
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                @endif
                     <!-- New restaurant form -->
-                    <form action="{{url('/restaurant/store')}}" method="POST" class="form-horizontal">
-                        {{csrf_field()}}
+                    <form action="{{url('restaurant')}}" method="POST" class="form-horizontal">
+                        {{ csrf_field() }}
 
                         <!-- Restaurant name -->
                         <div class="form-group">
@@ -45,7 +59,7 @@
                         <div class="form-group">
                             <label for="city" class="col-sm-2 control-label">City</label>
                             <div class="col-sm-9">
-                                <input type="text" name="address" id="city" class="form-control" value="{{ old('city') }}" placeholder="City name">
+                                <input type="text" name="city" id="city" class="form-control" value="{{ old('city') }}" placeholder="City name">
                             </div>
                         </div>
 

@@ -19,9 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::post('/geo', 'GeoController@index');
+Route::get('/restaurant/{restaurant}', 'RestaurantController@index');
+Route::post('/restaurant', 'RestaurantController@store');
 
 Route::get('/restaurants', 'RestaurantController@index');
 
-Route::get('/restaurant/{restaurant}', 'RestaurantController@index');
+
+
 
 Route::get('/results', 'RestaurantController@results');

@@ -34,7 +34,7 @@ class User extends Authenticatable
      */
     public function restaurants()
     {
-        return $this->hasMany('App\Restaurant');
+        return $this->hasMany(Restaurant::class);
     }
 
     /**
@@ -44,7 +44,7 @@ class User extends Authenticatable
      */
     public function reviews()
     {
-        return $this->hasMany('App\Review');
+        return $this->hasMany(Review::class);
     }
 
 }

@@ -11,6 +11,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class RestaurantController extends Controller
@@ -46,21 +47,24 @@ class RestaurantController extends Controller
             'street_address' => 'required|max:255',
             'city' => 'required|max:255',
             'province' => 'required|max:255',
+            'postal_code' => 'required|min:6|max:7',
+            'genre' => 'required',
             'min_price' => 'required',
             'max_price' => 'required',
         ]);
 
         // Retrieve
-        $pairs = $this->geo->getGeocodingSearchResults($request->postal);
+        $pairs = $this->geo->getGeocodingSearchResults($request->postal_code);
         $latitude = $pairs['latitude'];
         $longitude = $pairs['longitude'];
 
         // Store in database
         $restaurant = $request->user()->restaurants()->create([
-            'user_id' => $request->user_id,
             'name' => $request->name,
             'street_address' => $request->street_address,
             'city' => $request->city,
+            'province' => $request->province,
+            'postal_code' => $request->postal_code,
             'genre' => $request->genre,
             'min_price' => $request->min_price,
             'max_price' => $request->max_price,
@@ -81,10 +85,6 @@ class RestaurantController extends Controller
     
     
     // Denys
-    //use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public function contact(){
-        return view('search');
-    }
     
     protected function results(Request $req){
         $keywords = $req -> input('keywords');

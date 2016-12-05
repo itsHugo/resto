@@ -12,7 +12,7 @@ class Restaurant extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'address', 'genre', 'min_price', 'max_price', 'latitude', 'longitude'
+        'name', 'street_address', 'city', 'province', 'postal_code', 'genre', 'min_price', 'max_price', 'latitude', 'longitude'
     ];
 
     /**
@@ -22,7 +22,7 @@ class Restaurant extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -43,7 +43,7 @@ class Restaurant extends Model
      */
     public function reviews()
     {
-        return $this->hasMany('App\Review');
+        return $this->hasMany(Review::class);
     }
 
 
