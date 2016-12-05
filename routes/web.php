@@ -30,6 +30,7 @@ Route::get('/restaurant', function(){
     ]);
 });
 
+
 Route::post('/restaurant', 'RestaurantController@store')->middleware('auth');
 Route::delete('/restaurant/{restaurant}', 'RestaurantController@destroy');
 

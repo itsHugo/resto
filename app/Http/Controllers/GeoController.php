@@ -27,8 +27,9 @@ class GeoController extends Controller
      */
     public function index(Request $request)
     {
-        //if($request->error === 0){
-            if($request->latitude && $request->longitude){
+        // If request is valid get restaurants
+        if($request->error === 0) {
+            if ($request->latitude && $request->longitude) {
                 $pairs['latitude'] = $request->latitude;
                 $pairs['longitude'] = $request->longitude;
             } else {
@@ -41,12 +42,13 @@ class GeoController extends Controller
 
 
             return redirect()->action('HomeController@index', [
-                'latitude' =>$pairs['latitude'],
+                'latitude' => $pairs['latitude'],
                 'longitude' => $pairs['longitude']
             ]);
+        }
 
-
-        //return redirect()->route('/restaurants', [$pairs];
+        // Else return to postal code form
+        return view('welcome');
 
     }
 }
