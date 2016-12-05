@@ -27,28 +27,22 @@ class GeoController extends Controller
      */
     public function index(Request $request)
     {
-        // If request is valid get restaurants
-        if($request->error === 0) {
-            if ($request->latitude && $request->longitude) {
-                $pairs['latitude'] = $request->latitude;
-                $pairs['longitude'] = $request->longitude;
-            } else {
-                $pairs = $this->geo->getGeocodingSearchResults($request->postal);
-            }
-
-            // Sets the pairs to session variables
-            session(['latitude' => $pairs['latitude']]);
-            session(['longitude' => $pairs['longitude']]);
-
-
-            return redirect()->action('HomeController@index', [
-                'latitude' => $pairs['latitude'],
-                'longitude' => $pairs['longitude']
-            ]);
+        if ($request->latitude  && $request->longitude) {
+            $pairs['latitude'] = $request->latitude;
+            $pairs['longitude'] = $request->longitude;
+        } else if($request->postal){
+            $pairs = $this->geo->getGeocodingSearchResults($request->postal);
         }
 
-        // Else return to postal code form
-        return view('welcome');
+        // Sets the pairs to session variables
+        session(['latitude' => $pairs['latitude']]);
+        session(['longitude' => $pairs['longitude']]);
+        return redirect()->action('HomeController@index', [
+            'latitude' => $pairs['latitude'],
+            'longitude' => $pairs['longitude']
+        ]);
+        //return view('welcome');
+
 
     }
 }
