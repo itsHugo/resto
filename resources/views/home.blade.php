@@ -25,16 +25,15 @@
                 </div>
 
                 @if(count($restaurants) > 0)
-                    @foreach($restaurants as $restaurant)
-                        <a class="list-group-item" href="{{ url('restaurant/'.$restaurant->id) }}">
-                            <div class="panel-body">
-                                <h3>{{ $restaurant->name }}</h3>
-                                <p>{{ $restaurant->street_address }}</p>
-                                <p>{{ $restaurant->city }}</p>
-                                <p>{{ $restaurant->postal_code }}</p>
+                    @for($i=0; $i<20; $i++)
+                        <a class="list-group-item" href="{{ url('restaurant/'.$restaurants[$i]->id) }}">
+                            <div class="panel-body resto">
+                                <h3>{{ $restaurants[$i]->name }}</h3>
+                                Genre: {{ $restaurants[$i]->genre }}
+                                <br/>Price: ${{ $restaurants[$i]->min_price}} - ${{ $restaurants[$i]->max_price }}
                             </div>
                         </a>
-                    @endforeach
+                    @endfor
                 @endif
             </div>
         </div>

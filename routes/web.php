@@ -36,3 +36,5 @@ Route::delete('/restaurant/{restaurant}', 'RestaurantController@destroy');
 
 Route::get('/restaurants', 'RestaurantController@index');
 Route::get('/results', 'RestaurantController@results');
+
+Route::post('/review/store', 'ReviewController@store');

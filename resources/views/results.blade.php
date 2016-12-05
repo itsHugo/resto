@@ -30,11 +30,10 @@
                     </div>
                     @foreach($restaurants as $restaurant)
                         <a class="list-group-item" href="{{ url('restaurant/'.$restaurant->id) }}">
-                            <div class="panel-body">
+                            <div class="panel-body resto">
                                 <h3>{{ $restaurant->name }}</h3>
-                                <p>{{ $restaurant->street_address }}</p>
-                                <p>{{ $restaurant->city }}</p>
-                                <p>{{ $restaurant->postal_code }}</p>
+                                Genre: {{ $restaurant->genre }}
+                                <br/>Price: ${{ $restaurant->min_price}} - ${{ $restaurant->max_price }}
                             </div>
                         </a>
                     @endforeach

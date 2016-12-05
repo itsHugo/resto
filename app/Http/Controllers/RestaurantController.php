@@ -26,10 +26,10 @@ class RestaurantController extends Controller
         $this->reviews = $reviews;
     }
 
-    public function index(Restaurant $restaurant){
+    public function index(Request $request, Restaurant $restaurant){
         return view('restaurants.index', [
             'restaurant' => $restaurant,
-            'reviews' => $this->reviews->forRestaurant($restaurant) // Get reviews
+            'reviews' => $request->reviews // Get reviews
         ]);
     }
 
@@ -74,6 +74,8 @@ class RestaurantController extends Controller
 
         return redirect('/restaurant/'.$restaurant->id);
     }
+
+
 
     public function edit(Request $request, Restaurant $restaurant){
         $this->authorize('edit', $restaurant);

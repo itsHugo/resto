@@ -52,6 +52,10 @@
                             <div class="panel-heading">
                                 <a data-toggle="collapse" href="#collapseReviewForm">Add a review</a>
                             </div>
+
+                            <!-- Display error message -->
+                            @include('common.errors')
+
                             <div id="collapseReviewForm" class="panel-body collapse">
                                 <!-- New restaurant form -->
                                 <form action="{{url('/review/store')}}" method="POST" class="form-horizontal">
@@ -78,11 +82,12 @@
                                     <div class="form-group">
                                         <label for="content" class="col-sm-2 control-label">Content</label>
                                         <div class="col-sm-9">
-                                            <textarea  name="content" id="content" class="form-control" placeholder="Review content...">
-                                                {{ old('content') }}
-                                            </textarea>
+                                            <textarea  name="content" id="content" class="form-control" placeholder="Review content..." value="{{ old('content') }}"></textarea>
                                         </div>
                                     </div>
+
+                                    <!-- Restaurant id -->
+                                    <input type="text" hidden name="restaurant_id" value="{{$restaurant->id}}"/>
 
                                     <!-- Submit form -->
                                     <div class="well well-sm">
