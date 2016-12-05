@@ -103,7 +103,9 @@
                                 <a class="list-group-item">
                                     <div class="panel-body">
                                         <!-- Review details -->
-                                        <h4>{{ $review->title }}</h4>
+                                        <h4>{{ $review->title }}</h4> <br/>
+                                        Rating: {{ $review->rating }} <br/>
+                                        <h5>{{ $review->content }}</h5>
 
                                         <!-- Buttons here -->
                                         @can('edit', $review)

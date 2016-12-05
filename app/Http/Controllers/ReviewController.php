@@ -62,9 +62,7 @@ class ReviewController extends Controller
             'rating' => $request->rating,
         ]);
 
-        $reviews = DB::table('reviews')->where('restaurant_id', '=', $request->restaurant_id)->
-        paginate(20);
 
-        return redirect('/restaurant/'.$review->restaurant_id, ['reviews' => $reviews]);
+        return redirect('/restaurant/'.$review->restaurant_id);
     }
 }

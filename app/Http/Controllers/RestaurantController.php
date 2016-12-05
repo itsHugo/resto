@@ -27,9 +27,13 @@ class RestaurantController extends Controller
     }
 
     public function index(Request $request, Restaurant $restaurant){
+
+        $reviews = DB::table('reviews')->where('restaurant_id', '=', $restaurant->id)->
+        paginate(20);
+
         return view('restaurants.index', [
             'restaurant' => $restaurant,
-            'reviews' => $request->reviews // Get reviews
+            'reviews' => $reviews // Get reviews
         ]);
     }
 
