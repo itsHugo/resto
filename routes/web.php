@@ -37,6 +37,7 @@ Route::get('/restaurant', function(){
 Route::post('/restaurant', 'RestaurantController@store')->middleware('auth');
 
 Route::post('/editResto', 'RestaurantController@editResto');
+Route::post('/deleteResto', 'RestaurantController@deleteResto');
 Route::delete('/restaurant/{restaurant}', 'RestaurantController@destroy');
 
 Route::get('/restaurants', 'RestaurantController@index');

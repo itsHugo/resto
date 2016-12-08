@@ -99,7 +99,11 @@ class RestaurantController extends Controller
 
         return redirect('/restaurant/'.$request->id);
     }
-
+    
+    protected function deleteResto(Request $request){
+        DB::table('restaurants')->where('id', '=', $request -> resto_id) -> delete();
+        return redirect('/');
+    }
     protected function results(Request $req){
         $keywords = $req -> input('keywords');
         // TO DO: add where for city name, genre, address,...
