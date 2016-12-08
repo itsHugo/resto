@@ -108,12 +108,11 @@
                                         @can('destroy', $review)
                                             <!-- Current User can delete their review -->
                                             <!-- Delete Button -->
-                                            <form action="{{ url('review/'.$review->id) }}" method="POST">
+                                            <form action="{{ url('deleteReview') }}" method="POST">
                                                 {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" id="delete-task-{{ $review->id }}" class="btn btn-danger">
+                                                <input type="text" hidden name="review_id" value="{{$review->id}}"/>
+                                                <input type="text" hidden name="restaurant_id" value="{{$review->restaurant_id}}"/>
+                                                <button type="submit" id="delete-task" class="btn btn-danger">
                                                     <i class="fa fa-btn fa-trash"></i>Delete
                                                 </button>
                                             </form>

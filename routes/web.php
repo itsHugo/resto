@@ -44,3 +44,4 @@ Route::get('/results', 'RestaurantController@results');
 
 Route::post('/review/store', 'ReviewController@store');
 Route::post('/editReview', 'ReviewController@editReview');
+Route::post('/deleteReview', 'ReviewController@deleteReview');
