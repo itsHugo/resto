@@ -10,17 +10,6 @@
                     <div class="panel-heading">
                         <h2>{{ $restaurant->name }}</h2>
 
-                        <!-- Buttons here -->
-                        @can('edit', $restaurant)
-                        <form action="" method="GET">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="_method" value="UPDATE">
-                            <button type="submit" id="update-review" class="btn btn-danger">
-                                <i class="fa fa-btn"></i>Edit
-                            </button>
-                        </form>
-                        @endcan
-
                         @can('destroy', $restaurant)
                             <form action="" method="POST">
                                 {{ csrf_field() }}
@@ -110,24 +99,17 @@
                                         <h4>{{ $review->title }}</h4> <br/>
                                         Rating: {{ $review->rating }} <br/>
                                         <h5>{{ $review->content }}</h5>
+                                        <p>{{ $review->user->name }}</p>
 
                                         <!-- Buttons here -->
                                         @can('edit', $review)
-                                            <!-- Current User can edit their review -->
-                                            <form action="" method="POST">
-                                                {{ csrf_field() }}
-                                                {{ method_field('UPDATE') }}
-                                                <input type="hidden" name="_method" value="UPDATE">
-                                                <button type="submit" id="update-review-{{ $review->id }}" class="btn btn-danger">
-                                                    <i class="fa fa-btn"></i>Edit
-                                                </button>
-                                            </form>
+
                                         @endcan
 
                                         @can('destroy', $review)
                                             <!-- Current User can delete their review -->
                                             <!-- Delete Button -->
-                                            <form action="{{ url('review/'.$task->id) }}" method="POST">
+                                            <form action="{{ url('review/'.$review->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 

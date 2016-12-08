@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\GeoRepository;
 use App\Repositories\ReviewRepository;
 use App\Restaurant;
+use App\Review;
 use Illuminate\Http\Request;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -28,8 +29,8 @@ class RestaurantController extends Controller
 
     public function index(Request $request, Restaurant $restaurant){
 
-        $reviews = DB::table('reviews')->where('restaurant_id', '=', $restaurant->id)->
-        paginate(5);
+        $reviews = Review::where('restaurant_id', $restaurant->id)->paginate(5);
+        //->where('restaurant_id', '=', $restaurant->id)->paginate(5);
 
         return view('restaurants.index', [
             'restaurant' => $restaurant,
@@ -97,7 +98,7 @@ class RestaurantController extends Controller
             'min_price' => $request -> min_price,
             'max_price' => $request -> max_price]);
 
-        return redirect('/restaurant/'.$restos ->id);
+        return redirect('/restaurant/'.$request->id);
     }
 
     protected function results(Request $req){
