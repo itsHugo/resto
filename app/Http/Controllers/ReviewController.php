@@ -51,14 +51,14 @@ class ReviewController extends Controller
             'restaurant_id' => 'required',
             'title' => 'required|max:255',
             'rating' => 'required|max:255',
-            'content' => 'required|max:255'
+            'content' => 'required|max:255',
         ]);
 
         // Store in database
         $review = $request->user()->reviews()->create([
             'restaurant_id' => $request->restaurant_id,
             'title' => $request->title,
-            'content' => $request->content_text,
+            'content' => $request->content,
             'rating' => $request->rating,
         ]);
         

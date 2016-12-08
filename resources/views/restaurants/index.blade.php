@@ -52,9 +52,9 @@
                             <div id="collapseReviewForm" class="panel-body collapse">
                                 <!-- New restaurant form -->
                                 <form action="{{url('/review/store')}}" method="POST" class="form-horizontal">
-                                {{csrf_field()}}
+                                    {{csrf_field()}}
 
-                                <!-- Review title -->
+                                    <!-- Review title -->
                                     <div class="form-group">
                                         <label for="title" class="col-sm-2 control-label">Title</label>
                                         <div class="col-sm-9">
@@ -73,9 +73,9 @@
 
                                     <!-- Review content -->
                                     <div class="form-group">
-                                        <label for="content_text" class="col-sm-2 control-label">Content</label>
+                                        <label for="content" class="col-sm-2 control-label">Content</label>
                                         <div class="col-sm-9">
-                                            <textarea  name="content_text" id="content_text" class="form-control" placeholder="Review content..." value="{{ old('content_text') }}"></textarea>
+                                            <textarea  name="content" id="content" class="form-control" placeholder="Review content...">{{ old('content') }}</textarea>
                                         </div>
                                     </div>
 
@@ -98,7 +98,7 @@
                                         <!-- Review details -->
                                         <h4>{{ $review->title }}</h4> <br/>
                                         <p>By: {{ $review->user->name }}</p>
-                                        <p></p>Rating: {{ $review->rating }}</p>
+                                        <p>Rating: {{ $review->rating }}</p>
                                         <p>{{ $review->content }}</p>
 
 
