@@ -103,9 +103,7 @@
 
 
                                         <!-- Buttons here -->
-                                        @can('edit', $review)
-
-                                        @endcan
+                                        
 
                                         @can('destroy', $review)
                                             <!-- Current User can delete their review -->
@@ -122,6 +120,9 @@
                                         @endcan
                                     </div>
                                 </a>
+                            @can('edit', $review)
+                                            @include('common.editreview')
+                                    @endcan
                             @endforeach
 
                                 <div class="panel-footer">

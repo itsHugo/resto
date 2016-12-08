@@ -61,8 +61,22 @@ class ReviewController extends Controller
             'content' => $request->content_text,
             'rating' => $request->rating,
         ]);
-
+        
 
         return redirect('/restaurant/'.$review->restaurant_id);
+    }
+    
+     public function editReview(Request $request){
+         
+        $title = "title_edit".$request->id;
+        $rating = "rating_edit".$request->id;
+        $content = "content_edit".$request->id;
+        
+        DB::table('reviews')->where('id', '=', $request -> id) -> update([
+            'title' => $request -> $title,
+            'rating' => $request -> $rating,
+            'content' => $request -> $content]); 
+
+        return redirect('/restaurant/'.$request->restaurant_id);
     }
 }
