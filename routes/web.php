@@ -33,10 +33,10 @@ Route::get('/restaurant/{restaurant}', 'RestaurantController@index');
 
 Route::get('/restaurant', function(){
     return view('/restaurants/add');
-});
+})->middleware('auth');
 Route::post('/restaurant', 'RestaurantController@store')->middleware('auth');
 
-Route::post('/editResto', 'RestaurantController@editResto')->middleware('auth');
+Route::post('/editResto', 'RestaurantController@editResto');
 Route::delete('/restaurant/{restaurant}', 'RestaurantController@destroy');
 
 Route::get('/restaurants', 'RestaurantController@index');

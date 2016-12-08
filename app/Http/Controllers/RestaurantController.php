@@ -29,8 +29,7 @@ class RestaurantController extends Controller
 
     public function index(Request $request, Restaurant $restaurant){
 
-        $reviews = Review::where('restaurant_id', $restaurant->id)->paginate(5);
-        //->where('restaurant_id', '=', $restaurant->id)->paginate(5);
+        $reviews = $this->reviews->forRestaurant($restaurant)->paginate(5);
 
         return view('restaurants.index', [
             'restaurant' => $restaurant,
@@ -88,7 +87,7 @@ class RestaurantController extends Controller
     }
 
     public function editResto(Request $request){
-        $restos = DB::table('restaurants')->where('id', '=', $request -> id) -> update([
+        DB::table('restaurants')->where('id', '=', $request -> id) -> update([
             'name' => $request -> name,
             'city' => $request -> city,
             'street_address' => $request -> street_address,
