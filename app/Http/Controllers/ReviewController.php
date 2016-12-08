@@ -58,7 +58,7 @@ class ReviewController extends Controller
         $review = $request->user()->reviews()->create([
             'restaurant_id' => $request->restaurant_id,
             'title' => $request->title,
-            'content' => $request->content,
+            'content' => $request->content_text,
             'rating' => $request->rating,
         ]);
 

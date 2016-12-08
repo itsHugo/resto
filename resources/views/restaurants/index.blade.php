@@ -73,9 +73,9 @@
 
                                     <!-- Review content -->
                                     <div class="form-group">
-                                        <label for="content" class="col-sm-2 control-label">Content</label>
+                                        <label for="content_text" class="col-sm-2 control-label">Content</label>
                                         <div class="col-sm-9">
-                                            <textarea  name="content" id="content" class="form-control" placeholder="Review content..." value="{{ old('content') }}"></textarea>
+                                            <textarea  name="content_text" id="content_text" class="form-control" placeholder="Review content..." value="{{ old('content_text') }}"></textarea>
                                         </div>
                                     </div>
 
