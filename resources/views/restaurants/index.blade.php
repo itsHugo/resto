@@ -97,9 +97,10 @@
                                     <div class="panel-body">
                                         <!-- Review details -->
                                         <h4>{{ $review->title }}</h4> <br/>
-                                        Rating: {{ $review->rating }} <br/>
-                                        <h5>{{ $review->content }}</h5>
-                                        <p>{{ $review->user->name }}</p>
+                                        <p>By: {{ $review->user->name }}</p>
+                                        <p></p>Rating: {{ $review->rating }}</p>
+                                        <p>{{ $review->content }}</p>
+
 
                                         <!-- Buttons here -->
                                         @can('edit', $review)

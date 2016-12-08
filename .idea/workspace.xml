@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5ce28f5d-7a99-4297-9222-062efb6eeec5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/RestaurantController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/RestaurantController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/common/editrestaurant.blade.php" afterPath="$PROJECT_DIR$/resources/views/common/editrestaurant.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/restaurants/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/restaurants/index.blade.php" />
     </list>
     <ignored path="resto.iws" />
@@ -41,8 +39,8 @@
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/restaurants/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="101" column="65" selection-start-line="101" selection-start-column="65" selection-end-line="101" selection-end-column="65" />
+            <state relative-caret-position="296">
+              <caret line="97" column="49" selection-start-line="97" selection-start-column="49" selection-end-line="97" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -601,7 +599,7 @@
       <workItem from="1480951246660" duration="3866000" />
       <workItem from="1480957205322" duration="15329000" />
       <workItem from="1481042227086" duration="747000" />
-      <workItem from="1481208433314" duration="9291000" />
+      <workItem from="1481208433314" duration="9571000" />
     </task>
     <task id="LOCAL-00001" summary="database tables">
       <created>1480225735567</created>
@@ -803,7 +801,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143992000" />
+    <option name="totallyTimeSpent" value="144272000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
@@ -1272,8 +1270,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/restaurants/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="101" column="65" selection-start-line="101" selection-start-column="65" selection-end-line="101" selection-end-column="65" />
+        <state relative-caret-position="296">
+          <caret line="97" column="49" selection-start-line="97" selection-start-column="49" selection-end-line="97" selection-end-column="49" />
           <folding />
         </state>
       </provider>
