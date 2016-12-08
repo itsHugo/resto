@@ -11,6 +11,9 @@
         {{ csrf_field() }}
 
         <!-- Restaurant name -->
+            <!-- Restaurant id -->
+            <input type="text" hidden name="restaurant_id" value="{{$restaurant->id}}"/>
+            
             <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-9">

@@ -17,21 +17,25 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Redirect for when a guest tries to add, then login
+// Put as a function in restaurant controller later
+//Route::get('/home', function(){
+//    return redirect()->action('HomeController@index', [
+//        'latitude' => session('latitude'),
+//        'longitude' => session('longitude')
+//    ]);
+//});
+
+
 Route::get('/home', 'HomeController@index');
 Route::post('/geo', 'GeoController@index');
 Route::get('/restaurant/{restaurant}', 'RestaurantController@index');
 
-// Redirect for when a guest tries to add, then login
-// Put as a function in restaurant controller later
 Route::get('/restaurant', function(){
-    return redirect()->action('HomeController@index', [
-        'latitude' => session('latitude'),
-        'longitude' => session('longitude')
-    ]);
+    return view('/restaurants/add');
 });
-
-
 Route::post('/restaurant', 'RestaurantController@store')->middleware('auth');
+
 Route::post('/editResto', 'RestaurantController@editResto')->middleware('auth');
 Route::delete('/restaurant/{restaurant}', 'RestaurantController@destroy');
 

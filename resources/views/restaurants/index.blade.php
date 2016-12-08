@@ -39,7 +39,10 @@
                         <p>{{ $restaurant->postal_code }}</p>
                         <p>{{ $restaurant->genre }}</p>
                         <p>${{ $restaurant->min_price}} - ${{ $restaurant->max_price }}</p>
-                        @include('common.editrestaurant')
+
+                        @can('edit', $restaurant)
+                            @include('common.editrestaurant')
+                        @endcan
                     </div>
                 </div>
 

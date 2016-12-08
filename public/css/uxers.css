@@ -2,10 +2,12 @@
     background-color: #bb4748;
     border-color: #EDCBB1;
 }
+
 .btn-primary:hover{
     background-color: #7C3238;
     border-color: #EDCBB1;
 }
+
 .resto{
     margin-top: -25px;
 }

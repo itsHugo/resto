@@ -44,23 +44,25 @@
                 </div>
                 
                 <div>
-
+                    <form class="navbar-form navbar-left" method="GET" action="{{url('/results')}}">
+                        <div class="form-group">
+                            <input class="form-control" type="search" id="search" name="keywords" required="" placeholder="Search for restaurants..." autocomplete="off" spellcheck="false">
+                        </div>
+                        <input class="btn btn-primary" type="submit" name="search" value="Search"/>
+                    </form>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
-                        <form class="navbar-form navbar-left" method="GET" action="{{url('/results')}}">
-                            <div class="form-group">
-                                <input class="form-control" type="search" id="search" name="keywords" required="" placeholder="Search for restaurants..." autocomplete="off" spellcheck="false">
-                            </div>
-                            <input class="btn btn-primary" type="submit" name="search" value="Search"/>
-                        </form>
+                        &nbsp;<li><a href="{{url("/restaurant")}}">Add Restaurant</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+
+
+                        
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>

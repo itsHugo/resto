@@ -84,13 +84,12 @@ class RestaurantController extends Controller
     public function edit(Request $request, Restaurant $restaurant){
         $this->authorize('edit', $restaurant);
 
-        // Edit restaurant
-        $restaurant->name = $request->name;
-
     }
 
     public function editResto(Request $request){
-        $restos = DB::table('restaurants')->where('name', '=', $request -> name) -> update(['city' => $request -> city,
+        $restos = DB::table('restaurants')->where('id', '=', $request -> id) -> update([
+            'name' => $request -> name,
+            'city' => $request -> city,
             'street_address' => $request -> street_address,
             'province' => $request -> province,
             'postal_code' => $request -> postal_code,
@@ -98,7 +97,7 @@ class RestaurantController extends Controller
             'min_price' => $request -> min_price,
             'max_price' => $request -> max_price]);
 
-        return redirect('/restaurant/');
+        return redirect('/restaurant/'.$restos ->id);
     }
 
     protected function results(Request $req){

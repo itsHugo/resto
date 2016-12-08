@@ -34,14 +34,18 @@ class GeoController extends Controller
             $pairs = $this->geo->getGeocodingSearchResults($request->postal);
         }
 
-        // Sets the pairs to session variables
-        session(['latitude' => $pairs['latitude']]);
-        session(['longitude' => $pairs['longitude']]);
-        return redirect()->action('HomeController@index', [
-            'latitude' => $pairs['latitude'],
-            'longitude' => $pairs['longitude']
-        ]);
-        //return view('welcome');
+        if(isset($pairs['response']) && $pairs['response'] != "OK") {
+            return view('welcome');
+        } else {
+            // Sets the pairs to session variables
+            session(['latitude' => $pairs['latitude']]);
+            session(['longitude' => $pairs['longitude']]);
+            return redirect()->action('HomeController@index', [
+                'latitude' => $pairs['latitude'],
+                'longitude' => $pairs['longitude']
+            ]);
+        }
+
 
 
     }

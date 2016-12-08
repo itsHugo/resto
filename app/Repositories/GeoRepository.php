@@ -30,15 +30,19 @@ class GeoRepository
         $xml = new \DOMDocument();//backslash to indicate global namespace
         $xml->loadXML($results);
 
-        // traverse the DOMDocument or use XPath to find the longitude/latitude pairs
-        if($xml)
-        $latitude = $xml->getElementsByTagName('lat')->item(0)->nodeValue;
-        $longitude = $xml->getElementsByTagName('lng')->item(0)->nodeValue;
+        $response_status = $xml->getElementsByTagName('status')->item(0)->nodeValue;
 
-        // assign pairs to array
-        $pairs['latitude'] = $latitude;
-        $pairs['longitude'] = $longitude;
+        // Gets the latitude and longitude if there is a valid location
+        if($response_status === "OK") {
+            $latitude = $xml->getElementsByTagName('lat')->item(0)->nodeValue;
+            $longitude = $xml->getElementsByTagName('lng')->item(0)->nodeValue;
 
+            // assign pairs to array
+            $pairs['latitude'] = $latitude;
+            $pairs['longitude'] = $longitude;
+        } else {
+            $pairs['response'] = $response_status;
+        }
         return $pairs;
     }
 
