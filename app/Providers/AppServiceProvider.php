@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
     {
         // Using Quebec locale
         // Used by ModelFactory to seed database
-        $this->app->singleton(\Faker\Generator::class, function () {
-            return \Faker\Factory::create('fr_CA');
-        });
+//        $this->app->singleton(\Faker\Generator::class, function () {
+//            return \Faker\Factory::create('fr_CA');
+//        });
     }
 }
