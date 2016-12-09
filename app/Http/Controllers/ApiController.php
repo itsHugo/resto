@@ -8,28 +8,51 @@ use Auth;
 use Illuminate\Http\Request;
 
 
+/**
+ * Class ApiController
+ * @package App\Http\Controllers
+ */
 class ApiController extends Controller
 {
-    //
+    /**
+     * @var GeoRepository|ReviewRepository
+     */
     protected $geo, $reviews;
 
+    /**
+     * ApiController constructor.
+     * @param GeoRepository $geo
+     * @param ReviewRepository $reviews
+     */
     public function __construct(GeoRepository $geo, ReviewRepository $reviews){
         $this->geo = $geo;
         $this->reviews = $reviews;
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function get_restaurants(Request $request){
         $restaurants = $this->geo->getRestaurantsNear($request->latitude, $request->longitude);
 
         return response()->json($restaurants, 200);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function get_reviews(Request $request){
         $reviews = $this->reviews->forRestaurant($request->restaurant_id);
 
         return response()->json($reviews, 200);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store_restaurant(Request $request){
         $credentials = $request->only('email', 'password');
         $valid = Auth::once($credentials);
@@ -60,6 +83,10 @@ class ApiController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store_review(Request $request){
         $credentials = $request->only('email', 'password');
         $valid = Auth::once($credentials);
