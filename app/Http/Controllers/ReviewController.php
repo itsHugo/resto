@@ -7,15 +7,22 @@ use Illuminate\Support\Facades\DB;
 
 use App\Review;
 
+/**
+ * Class ReviewController
+ * @package App\Http\Controllers
+ */
 class ReviewController extends Controller
 {
+    /**
+     * ReviewController constructor.
+     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
     /**
-     * Destroy a given review.
+     * NOT USED AT THE MOMENT
      *
      * @param Request $request
      * @param Review $review
@@ -44,6 +51,12 @@ class ReviewController extends Controller
         // Redirect
     }
 
+    /**
+     * Add a review to the database.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(Request $request)
     {
         // Validate request data
@@ -65,8 +78,14 @@ class ReviewController extends Controller
 
         return redirect('/restaurant/'.$review->restaurant_id);
     }
-    
-     public function editReview(Request $request){
+
+    /**
+     * Edits a review.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function editReview(Request $request){
          
         $title = "title_edit".$request->id;
         $rating = "rating_edit".$request->id;
@@ -79,7 +98,14 @@ class ReviewController extends Controller
 
         return redirect('/restaurant/'.$request->restaurant_id);
     }
-    
+
+    /**
+     * Deletes a review.
+     *
+     * @param Request $request
+     * @param Review $review
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function deleteReview(Request $request, Review $review){
         $restaurant_id = $review->restaurant_id;
         DB::table('reviews')->where('id', '=', $review->id) -> delete();

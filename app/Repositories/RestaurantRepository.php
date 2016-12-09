@@ -10,6 +10,10 @@ namespace App\Repositories;
 
 use App\User;
 
+/**
+ * Class RestaurantRepository
+ * @package App\Repositories
+ */
 class RestaurantRepository
 {
     /**

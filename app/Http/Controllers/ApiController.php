@@ -10,11 +10,15 @@ use Illuminate\Http\Request;
 
 /**
  * Class ApiController
+ * Contains functions for API interactions.
+ *
  * @package App\Http\Controllers
  */
 class ApiController extends Controller
 {
     /**
+     * Repository variables
+     *
      * @var GeoRepository|ReviewRepository
      */
     protected $geo, $reviews;
@@ -30,6 +34,8 @@ class ApiController extends Controller
     }
 
     /**
+     * Gets the nearest restaurants and returns a JSON response of the array.
+     *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -40,6 +46,8 @@ class ApiController extends Controller
     }
 
     /**
+     * Gets the reviews for a restaurant and returns a JSON response of the array.
+     *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -50,6 +58,8 @@ class ApiController extends Controller
     }
 
     /**
+     * Retrieves a request and try to create a restaurant and store in the database.
+     *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -84,6 +94,8 @@ class ApiController extends Controller
     }
 
     /**
+     * Retrieves a request and try to create a review and store in the database.
+     *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */

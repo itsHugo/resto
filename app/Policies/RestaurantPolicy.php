@@ -6,6 +6,10 @@ use App\User;
 use App\Restaurant;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
+/**
+ * Class RestaurantPolicy
+ * @package App\Policies
+ */
 class RestaurantPolicy
 {
     use HandlesAuthorization;

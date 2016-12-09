@@ -11,6 +11,10 @@ namespace App\Repositories;
 use App\User;
 use App\Restaurant;
 
+/**
+ * Class ReviewRepository
+ * @package App\Repositories
+ */
 class ReviewRepository
 {
     /**

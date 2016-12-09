@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Review
+ * @package App
+ */
 class Review extends Model
 {
     /**
@@ -17,7 +21,7 @@ class Review extends Model
 
 
     /**
-     * Associates a User with the Review.
+     * Returns the user that this review belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -26,6 +30,11 @@ class Review extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Returns the restaurant that this review belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class);

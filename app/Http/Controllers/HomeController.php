@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Restaurant;
 use App\Repositories\GeoRepository;
 
+/**
+ * Class HomeController
+ * @package App\Http\Controllers
+ */
 class HomeController extends Controller
 {
     /**

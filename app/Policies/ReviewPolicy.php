@@ -6,6 +6,10 @@ use App\User;
 use App\Review;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
+/**
+ * Class ReviewPolicy
+ * @package App\Policies
+ */
 class ReviewPolicy
 {
     use HandlesAuthorization;

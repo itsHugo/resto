@@ -11,13 +11,17 @@ namespace App\Repositories;
 use DB;
 use App\Restaurant;
 
+/**
+ * Class GeoRepository
+ * @package App\Repositories
+ */
 class GeoRepository
 {
     /**
      * Takes in an address and retrieves its latitude and longitude from
      * the Google Maps' API.
      *
-     * Code snippet credit to Jaya Nilakantan.
+     * Code snippet credited to Jaya Nilakantan.
      * @param $address
      * @return mixed
      */
@@ -49,7 +53,7 @@ class GeoRepository
     /**
      * Retrieves all the restaurants near the latitude/longitude pairs within a certain radius.
      *
-     * Code snippet credit to Jaya Nilakantan.
+     * Code snippet credited to Jaya Nilakantan.
      * @param $latitude
      * @param $longitude
      * @param int $radius
