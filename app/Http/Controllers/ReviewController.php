@@ -79,4 +79,10 @@ class ReviewController extends Controller
 
         return redirect('/restaurant/'.$request->restaurant_id);
     }
+    
+    public function deleteReview(Request $request){
+         
+        DB::table('reviews')->where('id', '=', $request -> review_id) -> delete();
+        return redirect('/restaurant/'.$request->restaurant_id);
+    }
 }
