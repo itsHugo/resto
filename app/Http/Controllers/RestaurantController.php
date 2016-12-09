@@ -110,7 +110,7 @@ class RestaurantController extends Controller
     protected function results(Request $req){
         $keywords = $req -> input('keywords');
         // TO DO: add where for city name, genre, address,...
-        $restos = DB::table('restaurants')->where('name', 'like', '%'.$keywords.'%') ->
+        $restos = Restaurant::where('name', 'ilike', '%'.$keywords.'%') ->
             orWhere('genre', 'like', '%'.$keywords.'%') ->
             orWhere('city', 'like', '%'.$keywords.'%') ->
             paginate(20);
