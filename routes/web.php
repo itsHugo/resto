@@ -38,11 +38,11 @@ Route::post('/restaurant', 'RestaurantController@store')->middleware('auth');
 
 Route::post('/editResto', 'RestaurantController@editResto');
 Route::post('/deleteResto', 'RestaurantController@deleteResto');
-Route::delete('/restaurant/{restaurant}', 'RestaurantController@destroy');
+Route::delete('/restaurant/{restaurant}', 'RestaurantController@deleteResto');
 
 Route::get('/restaurants', 'RestaurantController@index');
 Route::get('/results', 'RestaurantController@results');
 
 Route::post('/review/store', 'ReviewController@store');
 Route::post('/editReview', 'ReviewController@editReview');
-Route::post('/deleteReview', 'ReviewController@deleteReview');
+Route::delete('/review/{review}', 'ReviewController@deleteReview');

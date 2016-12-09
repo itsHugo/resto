@@ -11,7 +11,7 @@
                         <h2>{{ $restaurant->name }}</h2>
 
                         @can('destroy', $restaurant)
-                            <form action="" method="POST">
+                            <form action="{{ url('/restaurant/'.$restaurant->id) }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <input type="hidden" name="_method" value="DELETE">

@@ -100,10 +100,10 @@ class RestaurantController extends Controller
         return redirect('/restaurant/'.$request->id);
     }
     
-    protected function deleteResto(Request $request){
+    protected function deleteResto(Request $request, Restaurant $restaurant){
         
-        DB::table('reviews')->where('restaurant_id', '=', $request -> resto_id) -> delete();
-        DB::table('restaurants')->where('id', '=', $request -> resto_id) -> delete();
+        DB::table('reviews')->where('restaurant_id', '=', $restaurant->id) -> delete();
+        DB::table('restaurants')->where('id', '=', $restaurant->id) -> delete();
         return redirect('/');
     }
 
