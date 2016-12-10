@@ -78,6 +78,7 @@ class ApiController extends Controller
             // Store in database
             $restaurant = $request->user()->restaurants()->create([
                 'name' => $request->name,
+                'telephone' => $request->telephone,
                 'street_address' => $request->street_address,
                 'city' => $request->city,
                 'province' => $request->province,
@@ -106,14 +107,6 @@ class ApiController extends Controller
         if(!$valid)
             return response()->json(['error' => 'invalid_credentials'], 401);
         else {
-            // Validate request data
-            $this->validate($request, [
-                'restaurant_id' => 'required',
-                'title' => 'required|max:255',
-                'rating' => 'required|max:255',
-                'content' => 'required|max:255',
-            ]);
-
             // Store in database
             $review = $request->user()->reviews()->create([
                 'restaurant_id' => $request->restaurant_id,
