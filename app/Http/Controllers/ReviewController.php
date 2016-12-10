@@ -63,7 +63,7 @@ class ReviewController extends Controller
         $this->validate($request, [
             'restaurant_id' => 'required',
             'title' => 'required|max:255',
-            'rating' => 'required|max:255',
+            'rating' => 'required|digits:1|between:1,5',
             'content' => 'required|max:255',
         ]);
 

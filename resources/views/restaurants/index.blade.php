@@ -23,11 +23,14 @@
                     </div>
 
                     <div class="panel-body">
-                        <p>{{ $restaurant->street_address }}</p>
-                        <p>{{ $restaurant->city }}</p>
-                        <p>{{ $restaurant->postal_code }}</p>
-                        <p>{{ $restaurant->genre }}</p>
-                        <p>${{ $restaurant->min_price}} - ${{ $restaurant->max_price }}</p>
+                        <p>Telephone: {{ $restaurant->telephone }}</p>
+                        <p>Street address: {{ $restaurant->street_address }}</p>
+                        <p>City: {{ $restaurant->city }}</p>
+                        <p>Postal code: {{ $restaurant->postal_code }}</p>
+                        <p>Genre: {{ $restaurant->genre }}</p>
+                        <p>Price range: ${{ $restaurant->min_price}} - ${{ $restaurant->max_price }}</p>
+                        <p>Number of reviews: {{ $restaurant->review_count() }}</p>
+                        <p>Average rating: {{ $restaurant->review_average() }}</p>
 
                         @can('edit', $restaurant)
                             @include('common.editrestaurant')

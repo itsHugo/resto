@@ -34,6 +34,6 @@ class ReviewRepository
      * @return mixed
      */
     public function forRestaurant(Restaurant $restaurant){
-        return $restaurant->reviews()->orderBy('created_at', 'asc');
+        return $restaurant->reviews()->orderBy('created_at', 'desc');
     }
 }

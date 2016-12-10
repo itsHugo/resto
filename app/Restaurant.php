@@ -16,7 +16,7 @@ class Restaurant extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'street_address', 'city', 'province', 'postal_code', 'genre', 'min_price', 'max_price', 'latitude', 'longitude'
+        'name', 'telephone', 'street_address', 'city', 'province', 'postal_code', 'genre', 'min_price', 'max_price', 'latitude', 'longitude'
     ];
 
     /**
@@ -48,6 +48,19 @@ class Restaurant extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    /**
+     * Returns the average of the ratings.
+     *
+     * @return mixed
+     */
+    public function review_average(){
+        return number_format($this->reviews()->avg('rating'), 2);
+    }
+
+    public function review_count(){
+        return $this->reviews()->count();
     }
 
 

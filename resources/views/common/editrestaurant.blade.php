@@ -10,14 +10,22 @@
         <form action="{{url('editResto')}}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
 
-        <!-- Restaurant name -->
             <!-- Restaurant id -->
             <input type="text" hidden name="id" value="{{$restaurant->id}}"/>
-            
+
+            <!-- Restaurant name -->
             <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-9">
                     <input type="text" name="name" id="name" class="form-control" required="" value="{{$restaurant->name }}" placeholder="Restaurant name">
+                </div>
+            </div>
+
+            <!-- Telephone number -->
+            <div class="form-group">
+                <label for="telephone" class="col-sm-2 control-label">Telephone</label>
+                <div class="col-sm-9">
+                    <input type="text" name="telephone" id="telephone" class="form-control" value="{{ $restaurant->telephone }}" placeholder="Telephone">
                 </div>
             </div>
 

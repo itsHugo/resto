@@ -27,6 +27,7 @@ $factory->define(App\Restaurant::class, function (Faker\Generator $faker) {
    return [
        'user_id' => $faker->numberBetween(1,10),
        'name' => $faker->company,
+       'telephone' => $faker->phoneNumber,
        'street_address' => $faker->streetAddress,
        'city' => $faker->city,
        'province' => $faker->countryCode,

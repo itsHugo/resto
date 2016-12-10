@@ -1,6 +1,3 @@
-/**
- * Created by Hugo on 2016-11-27.
- */
 window.onload = init;
 
 function init() {

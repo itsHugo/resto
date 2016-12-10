@@ -7,6 +7,8 @@ use App\Repositories\GeoRepository;
 
 /**
  * Class GeoController
+ * Class responsible for handling the geolocation response.
+ *
  * @package App\Http\Controllers
  */
 class GeoController extends Controller

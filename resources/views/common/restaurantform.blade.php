@@ -18,6 +18,14 @@
                 </div>
             </div>
 
+            <!-- Telephone number -->
+            <div class="form-group">
+                <label for="telephone" class="col-sm-2 control-label">Telephone</label>
+                <div class="col-sm-9">
+                    <input type="text" name="telephone" id="telephone" class="form-control" value="{{ old('telephone') }}" placeholder="Telephone number">
+                </div>
+            </div>
+
             <!-- Restaurant address -->
             <div class="form-group">
                 <label for="street_address" class="col-sm-2 control-label">Street address</label>

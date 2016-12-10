@@ -64,6 +64,7 @@ class RestaurantController extends Controller
         // Validate request data
         $this->validate($request, [
             'name' => 'required|max:255',
+            'telephone' => 'required',
             'street_address' => 'required|max:255',
             'city' => 'required|max:255',
             'province' => 'required|max:255',
@@ -88,6 +89,7 @@ class RestaurantController extends Controller
             // Store in database
             $restaurant = $request->user()->restaurants()->create([
                 'name' => $request->name,
+                'telephone' => $request->telephone,
                 'street_address' => $request->street_address,
                 'city' => $request->city,
                 'province' => $request->province,
@@ -122,6 +124,7 @@ class RestaurantController extends Controller
         // Validate request data
         $this->validate($request, [
             'name' => 'required|max:255',
+            'telephone' => 'required',
             'street_address' => 'required|max:255',
             'city' => 'required|max:255',
             'province' => 'required|max:255',
@@ -133,6 +136,7 @@ class RestaurantController extends Controller
 
         DB::table('restaurants')->where('id', '=', $request -> id) -> update([
             'name' => $request -> name,
+            'telephone' => $request->telephone,
             'city' => $request -> city,
             'street_address' => $request -> street_address,
             'province' => $request -> province,

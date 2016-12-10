@@ -17,6 +17,7 @@ class CreateRestaurantsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->string('name');
+            $table->string('telephone');
             $table->string('street_address');
             $table->string('city');
             $table->string('province');
