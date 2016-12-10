@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <label for="postal" class="col-sm-3 control-label">Enter Postal Code</label>
                                 <div class="col-sm-6">
-                                    <input type="text" name="postal" id="postal" class="form-control" value="{{ old('postal') }}" placeholder="eg. M5V 1S5">
+                                    <input type="text" name="postal" id="postal" class="form-control" value="{{ old('postal') }}" required="" placeholder="eg. M5V 1S5">
                                 </div>
                             </div>
                             <!-- all the hidden fields -->

@@ -7,7 +7,15 @@
     background-color: #7C3238;
     border-color: #EDCBB1;
 }
+.btn-primary:focus{
+    background-color: #7C3238;
+    border-color: #EDCBB1;
+}
 
 .resto{
     margin-top: -25px;
+}
+
+body{
+    background-color: #F0D4BF;
 }
